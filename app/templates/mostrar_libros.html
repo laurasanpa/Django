@@ -1,0 +1,41 @@
+
+
+{% extends "test.html" %}
+
+{% block contenido %}
+<a class="btn btn-primary" href="{% url 'crear_libro' %}" role="button">Añadir</a>
+<a class="btn btn-warning" href="{% url 'editar_libro' %}" role="button">Editar</a>
+<a class="btn btn-danger" href="{% url 'borrar_libro' %}" role="button">Borrar</a>
+
+      {% if mislibros.len != 0 %}
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Título</th>
+            <th scope="col">Autor</th>
+            <th scope="col">Imdb</th>
+            <th scope="col">Género</th>
+            <th scope="col">Fecha</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for libro in mislibros %}
+        <tr>
+          <th >{{libro.titulo}}</th>
+          <td>{{libro.autor}}</td>
+          <td>{{libro.imdb}}</td>
+          <td>{{libro.genero}}</td>
+          <td>{{libro.fecha}}</td>
+        </tr>
+        {% endfor%} 
+      {% else %}
+       <h2> No hay libros</h2>
+      {% endif %}
+       
+      
+    </tbody>
+  </table>
+  
+{% endblock %}
